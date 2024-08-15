@@ -1,0 +1,48 @@
+@import url(https://lsong.org/css/stylesheet.css);
+@import url(https://lsong.org/stylesheets/list.css);
+@import url(https://lsong.org/stylesheets/card.css);
+@import url(https://lsong.org/stylesheets/button.css);
+@import url(https://lsong.org/stylesheets/dialog.css);
+
+.overview label {
+  display: block;
+}
+
+.overview-balance {
+  font-weight: bold;
+  font-size: 3em;
+}
+
+.full-width>* {
+  width: 100%;
+}
+
+.overview-income {
+  color: green;
+}
+
+.overview-expense {
+  color: red;
+}
+
+.transaction-income .transaction-amount {
+  color: green;
+}
+
+.transaction-expense .transaction-amount {
+  color: red;
+}
+
+.transaction-delete {
+  appearance: none;
+  margin-left: 10px;
+  background: none;
+}
+
+
+form {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
