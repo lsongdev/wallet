@@ -9,8 +9,6 @@ const getTodayDate = () => {
 const App = () => {
   const [transactions, setTransactions] = useState([]);
   const [filterType, setFilterType] = useState('all');
-  const [filterStartDate, setFilterStartDate] = useState(getTodayDate());
-  const [filterEndDate, setFilterEndDate] = useState(getTodayDate());
   const [searchKeyword, setSearchKeyword] = useState('');
   const [filteredTransactions, setFilteredTransactions] = useState([]);
   const [type, setType] = useState('income');
@@ -53,9 +51,8 @@ const App = () => {
 
     const filtered = transactions.filter(t => {
       const typeMatch = filterType === 'all' || t.type === filterType;
-      const dateMatch = (!filterStartDate || t.date >= filterStartDate) && (!filterEndDate || t.date <= filterEndDate);
       const keywordMatch = searchKeyword === '' || t.description.toLowerCase().includes(searchKeyword.toLowerCase());
-      return typeMatch && dateMatch && keywordMatch;
+      return typeMatch && keywordMatch;
     });
 
     setFilteredTransactions(filtered);
@@ -146,20 +143,6 @@ const App = () => {
             onChange: e => setSearchKeyword(e.target.value)
           }),
           h('button', { type: 'submit', className: 'button' }, "Search")
-        ]),
-        h('div', { className: 'flex input-group' }, [
-          h('input', {
-            type: 'date',
-            className: 'input input-block',
-            value: filterStartDate,
-            onChange: e => setFilterStartDate(e.target.value)
-          }),
-          h('input', {
-            type: 'date',
-            className: 'input input-block',
-            value: filterEndDate,
-            onChange: e => setFilterEndDate(e.target.value)
-          }),
         ]),
       ])
     ]),
